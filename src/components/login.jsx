@@ -1,17 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Axios from "axios";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [user, setUser] = useState(null);
 
+    const navigate = useNavigate();
+
     const handleLogin = (event) => {
         event.preventDefault();
         const successLogin = (success) => {
             setUser(success.data);
             localStorage.setItem("loggedInUser", true);
+            navigate("/about");
         };
 
         const errorLogin = (error) => {
@@ -27,11 +30,14 @@ function Login() {
             .then(successLogin)
             .catch(errorLogin);
     };
-    const getUser = localStorage.getItem("loggedInUser");
+    // const getUser = localStorage.getItem("loggedInUser");
+    /* function execute() {
+        console.log("Im executing...");
+    }
+    useEffect(execute); */
 
     return (
         <>
-            {getUser && <Navigate to="/about" replace={true} />}
             <form className="container">
                 <div className="mb-3">
                     <label for="exampleInputEmail1" className="form-label">

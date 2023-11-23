@@ -33,6 +33,7 @@ class Navbar extends Component {
                         >
                             <ul className="navbar-nav">
                                 <Navitem content="Home" navUrl="/home" />
+                                <Navitem content="Users" navUrl="/users" />
                                 <Navitem content="About" navUrl="/about" />
                                 <Navitem content="Contact" navUrl="/contact" />
                                 <Navitem content="Login" navUrl="/login" />
